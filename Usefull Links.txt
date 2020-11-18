@@ -1,0 +1,10 @@
+# Audible full scrapper
+https://github.com/elipickh/Audible_full_scraper
+https://github.com/elipickh/Audible_full_scraper/blob/master/Audible_scraper.ipynb
+
+# Audible python module
+https://audible.readthedocs.io/en/latest/
+
+# Audible command line interface
+https://github.com/mkb79/audible-cli
+
