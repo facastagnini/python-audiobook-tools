@@ -1,10 +1,10 @@
 from mutagen.mp4 import MP4 #, MP4Cover
 
+
 def get_answer():
     """Get an answer."""
     return True
 
-# actualizar tests
 
 class Audiobook():
     """ This class helps abtract everything known about our audiobook.
@@ -30,21 +30,20 @@ class Audiobook():
         # ❯ python3
         # Python 3.9.0 (default, Oct 27 2020, 14:23:31)
         # [Clang 10.0.0 (clang-1000.11.45.5)] on darwin
-        #>>> from mutagen.mp4 import MP4
-        #>>> MP4("ThePhoenixProjectANovelaboutITDevOpsandHelpingYourBusinessWin5thAnniversaryEdition_ep6.m4a")
+        # >>> from mutagen.mp4 import MP4
+        # >>> MP4("ThePhoenixProjectANovelaboutITDevOpsandHelpingYourBusinessWin5thAnniversaryEdition_ep6.m4a")
         # {
-        # '©nam': ['The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win 5th Anniversary Edition'], 
-        # '©ART': ['Gene Kim, Kevin Behr, George Spafford'], 
-        # 'aART': ['Gene Kim, Kevin Behr, George Spafford'], 
-        # '©alb': ['The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win 5th Anniversary Edition'], 
-        # '©day': ['2015'], 
-        # '©too': ['Lavf58.45.100'], 
-        # '©cmt': ['Chapter 48'], 
-        # '©gen': ['Audiobook'], 
-        # 'cprt': ['©2014 Gene Kim, Kevin Behr, and George Spafford (P)2015 Gene Kim, Kevin Behr, and George Spafford'], 
+        # '©nam': ['The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win 5th Anniversary Edition'],
+        # '©ART': ['Gene Kim, Kevin Behr, George Spafford'],
+        # 'aART': ['Gene Kim, Kevin Behr, George Spafford'],
+        # '©alb': ['The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win 5th Anniversary Edition'],
+        # '©day': ['2015'],
+        # '©too': ['Lavf58.45.100'],
+        # '©cmt': ['Chapter 48'],
+        # '©gen': ['Audiobook'],
+        # 'cprt': ['©2014 Gene Kim, Kevin Behr, and George Spafford (P)2015 Gene Kim, Kevin Behr, and George Spafford'],
         # 'covr': [MP4Cover(b'\xff
-        #try:
+        # try:
         #    metadata = MP4(self.audiobook_file)
 
-        #return metadata
-
+        # return metadata
