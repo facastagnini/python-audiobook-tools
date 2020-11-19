@@ -1,6 +1,8 @@
 import unittest
 import os
-import context
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from audiobook.helpers import Audiobook
 
