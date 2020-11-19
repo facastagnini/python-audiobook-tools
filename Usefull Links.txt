@@ -10,3 +10,9 @@ https://github.com/mkb79/audible-cli
 
 # This module will read MPEG-4 audio information and metadata, as found in Apple’s MP4 (aka M4A, M4B, M4P) files.
 https://mutagen.readthedocs.io/en/latest/api/mp4.html
+
+https://code.visualstudio.com/docs/python/python-tutorial
+
+https://docs.python-guide.org/
+
+https://www.simplifiedpython.net/python-template-class/
