@@ -1,6 +1,5 @@
 from . import helpers
 
-
 def get_hmm():
     """Get a thought."""
     return "hmmm..."

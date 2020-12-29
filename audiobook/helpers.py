@@ -8,10 +8,12 @@ def get_answer():
 
 class Audiobook():
     """ This class helps abtract everything known about our audiobook.
-    
+
     Attributes:
     self.audiobook_file = Audiobook file path (required)
-    self._audiobook_file_current_metadata = Hash containing all the available metadata that was read from the audiobook file.
+    self._audiobook_file_current_metadata = Hash containing all the available
+                                            metadata that was read from the
+                                            audiobook file.
 
     """
 

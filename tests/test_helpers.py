@@ -6,16 +6,36 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from audiobook.helpers import Audiobook
 
-AUDIOBOOK1 = "~/tests/fixture/audiobook1.m4a"
+AUDIOBOOK_AUDIBLE = "~/tests/fixture/audible.m4b"
+AUDIOBOOK_OVERDRIVE = "~/tests/fixture/overdrive.m4b"
+AUDIOBOOK_INCOMPLETE_METADATA = "~/tests/fixture/author - title.m4b"
 
-class HelpersTestSuite(unittest.TestCase):
+
+class AudiobookClassTestSuite(unittest.TestCase):
     """Testing the helper objects."""
 
-    def test_audiobook_class(self):
-        """Testing that the Audiobook class can load a template audiobook"""
-        audiobook1_absolute_path = os.path.abspath(os.path.join(os.path.dirname(__file__), AUDIOBOOK1))
-        audiobook1 = Audiobook(audiobook1_absolute_path)
-        assert audiobook1.audiobook_file == audiobook1_absolute_path
+    def read_audiobook(self, audiobook_file):
+        """Testing that the Audiobook class can load an audiobook example"""
+        audiobook_absolute_path = os.path.abspath(os.path.join(os.path.dirname(__file__), audiobook_file))
+        audiobook = Audiobook(audiobook_absolute_path)
+        assert audiobook.audiobook_file == audiobook_absolute_path
+
+    def test_read_audible_audiobook(self):
+        """Testing that the Audiobook class can load an audible template audiobook"""
+        self.read_audiobook(AUDIOBOOK_AUDIBLE)
+
+    def test_read_overdrive_audiobook(self):
+        """Testing that the Audiobook class can load an overdrive audiobook"""
+        self.read_audiobook(AUDIOBOOK_AUDIBLE)
+
+    def test_read_audiobook_with_incomplete_metadata(self):
+        """Testing that the Audiobook class can load a template audiobook with incomplete metadata
+    
+        When an audiobook is missing metadata required to identify it, we resort to the filename.
+        This audiobook is missing all the metadata that could help identify it,
+        therefor testing the filename based id mechanism.
+        """
+        self.read_audiobook(AUDIOBOOK_INCOMPLETE_METADATA)
 
 
 if __name__ == "__main__":
