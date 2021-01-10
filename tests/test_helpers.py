@@ -6,9 +6,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from audiobook.helpers import Audiobook
 
-AUDIOBOOK_AUDIBLE = "~/tests/fixture/audible.m4b"
-AUDIOBOOK_OVERDRIVE = "~/tests/fixture/overdrive.m4b"
-AUDIOBOOK_INCOMPLETE_METADATA = "~/tests/fixture/author - title.m4b"
+AUDIOBOOK_AUDIBLE = "fixtures/audible.m4b"
+AUDIOBOOK_OVERDRIVE = "fixtures/overdrive.m4b"
+AUDIOBOOK_INCOMPLETE_METADATA = "fixtures/author - title.m4b"
 
 
 class AudiobookClassTestSuite(unittest.TestCase):
@@ -16,7 +16,8 @@ class AudiobookClassTestSuite(unittest.TestCase):
 
     def read_audiobook(self, audiobook_file):
         """Testing that the Audiobook class can load an audiobook example"""
-        audiobook_absolute_path = os.path.abspath(os.path.join(os.path.dirname(__file__), audiobook_file))
+        audiobook_absolute_path = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), audiobook_file))
         audiobook = Audiobook(audiobook_absolute_path)
         assert audiobook.audiobook_file == audiobook_absolute_path
 
@@ -29,9 +30,11 @@ class AudiobookClassTestSuite(unittest.TestCase):
         self.read_audiobook(AUDIOBOOK_AUDIBLE)
 
     def test_read_audiobook_with_incomplete_metadata(self):
-        """Testing that the Audiobook class can load a template audiobook with incomplete metadata
-    
-        When an audiobook is missing metadata required to identify it, we resort to the filename.
+        """Testing that the Audiobook class can load an audiobook with incomplete metadata
+
+        When an audiobook is missing metadata required to identify it,
+        we resort to the filename.
+
         This audiobook is missing all the metadata that could help identify it,
         therefor testing the filename based id mechanism.
         """
