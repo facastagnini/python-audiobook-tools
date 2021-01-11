@@ -4,7 +4,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from audiobook.helpers import Audiobook
+from audiobook_tools.helpers import Audiobook
 
 AUDIOBOOK_AUDIBLE = "fixtures/audible.m4b"
 AUDIOBOOK_OVERDRIVE = "fixtures/overdrive.m4b"

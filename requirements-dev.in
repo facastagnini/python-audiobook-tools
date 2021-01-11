@@ -1,0 +1,6 @@
+-r requirements.txt
+nose
+flake8
+sphinx
+# mock
+# httmock
