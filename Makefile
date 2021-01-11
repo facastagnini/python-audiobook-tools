@@ -36,8 +36,8 @@ lint: virtualenv
 # https://docs.python-guide.org/writing/tests/#unittest
 unit_test: virtualenv
 	@echo "[$@]"
-	# ./.virtualenv/bin/python setup.py nosetests
-	./.virtualenv/bin/nosetests
+	./.virtualenv/bin/python setup.py nosetests
+	# ./.virtualenv/bin/nosetests
 
 # https://docs.python-guide.org/writing/tests/#doctest
 doctest: virtualenv

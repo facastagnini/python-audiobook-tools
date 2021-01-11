@@ -99,10 +99,10 @@ setup(
         'console_scripts': ['audiobook_tools=__main__:main'],
     },
     install_requires=required,
-    tests_require=tests_required,
-    extras_require={
-        'testing': tests_required
-    },
+    # tests_require=tests_required,
+    # extras_require={
+    #     'testing': tests_required
+    # },
     include_package_data=True,
     license='GPL',
     classifiers=[
