@@ -96,7 +96,7 @@ setup(
     # py_modules=['mypackage'],
 
     entry_points={
-        'console_scripts': ['audiobook_tools=__main__:main'],
+        'console_scripts': ['audiobook_tools=audiobook_tools.__main__:main'],
     },
     install_requires=required,
     # tests_require=tests_required,

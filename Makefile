@@ -50,4 +50,4 @@ build: virtualenv
 
 # publish:
 # 	@echo "[$@]"
-# 	./.virtualenv/bin/python setup.py sdist
+# 	./.virtualenv/bin/python setup.py upload
