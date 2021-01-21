@@ -94,6 +94,9 @@ ENV/
 # 
 .vscode
 
+#macOS stuff
+.DS_Store
+
 # diego temp files
 exclude
 workspace.code-workspace
