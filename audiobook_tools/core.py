@@ -78,7 +78,9 @@ def run():
     parser_info = subparsers.add_parser(
         'info', description='Get information about an audibook file.',
         help='Get information about an audiobook file')
-    parser_info.add_argument('audiobook_file', type=str, help='audiobook file path')
+    parser_info.add_argument('-f', '--file', type=str, help='audiobook file path')
+    parser_info.add_argument('-p', '--preserve-original', type=bool, default=False, 
+        help='write changes to a new file, preserving the original audiobook.')
     # parser.add_argument('-n', '--dry-run', required=False, help='read only run')
 
     args = parser.parse_args()
@@ -86,8 +88,11 @@ def run():
         logger.setLevel(logging.DEBUG)
 
     try:
-        # test for odm file
-        args.odm_file
+        # test for audiobook file
+        args.file
     except AttributeError:
         parser.print_help()
         exit(0)
+    
+    ab = Audiobook(args.file)
+    ab.info()
