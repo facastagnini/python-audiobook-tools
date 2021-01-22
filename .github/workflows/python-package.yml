@@ -32,4 +32,4 @@ jobs:
         make lint
     - name: Test with nose
       run: |
-        make unittest
+        make unit_test
