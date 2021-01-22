@@ -16,8 +16,7 @@ class AudiobookClassTestSuite(unittest.TestCase):
 
     def read_audiobook(self, audiobook_file):
         """Testing that the Audiobook class can load an audiobook example"""
-        audiobook_absolute_path = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), audiobook_file))
+        audiobook_absolute_path = os.path.abspath(os.path.join(os.path.dirname(__file__), audiobook_file))
         audiobook = Audiobook(audiobook_absolute_path)
         assert audiobook.audiobook_file == audiobook_absolute_path
 
