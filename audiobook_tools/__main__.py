@@ -5,11 +5,13 @@ import sys
 
 from .core import run
 
-def main():     # pragma: no cover
+
+def main():  # pragma: no cover
     try:
         run()
     except KeyboardInterrupt:
-        sys.exit(1)# create logger 
+        sys.exit(1)  # create logger
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

@@ -24,7 +24,19 @@ update_requirements: virtualenv
 	&& ./.virtualenv/bin/pip-compile --upgrade requirements-dev.in \
 	&& ./.virtualenv/bin/pip-sync requirements-dev.txt
 
-test: lint unit_test
+test: auto_formatter_test lint unit_test 
+
+# https://github.com/psf/black
+auto_formatter_test:
+	@echo "[$@]"
+	# The GitHub editor is 127 chars wide
+	./.virtualenv/bin/black --line-length 127 --check --diff --color .
+
+# https://github.com/psf/black
+auto_formatter:
+	@echo "[$@]"
+	# The GitHub editor is 127 chars wide
+	./.virtualenv/bin/black --line-length 127 .
 
 lint: virtualenv
 	@echo "[$@]"

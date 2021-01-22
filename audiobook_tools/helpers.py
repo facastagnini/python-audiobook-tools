@@ -3,13 +3,14 @@ from mutagen.mp4 import MP4  # , MP4Cover
 
 logger = logging.getLogger(__name__)
 
+
 def get_answer():
     """Get an answer."""
     return True
 
 
-class Audiobook():
-    """ This class helps abtract everything known about an audiobook.
+class Audiobook:
+    """This class helps abtract everything known about an audiobook.
 
     Attributes:
     self.audiobook_file = Audiobook file path (required)
