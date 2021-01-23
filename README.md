@@ -53,6 +53,25 @@ make test # to make sure you didnt break things
 # open a PR
 ```
 
+### ROADMAP
+
+The tool should:
+- [ ] take an audiobook file as a parameter
+- [ ] verify the format is correct (M4B)
+- [ ] search audible for the first x matches (default to 5)
+- [ ] present a table with the matches, the user picks one as the correct one
+- [ ] fetch metadata for the selected result
+- [ ] prenset a diff table showing all the fields and a before and after. example
+
+tag/field | original value | new value
+--------- | -------------- | ---------
+author | H.P.Lovecraft | Howard Phillips Lovecraft
+name | At the mountains of... | At the Mountains of Madness
+published | 1997 | 12-01-1997
+
+- [ ] apply the update? [y/n]
+- [ ] write the change
+
 
 ## Authors (in alphabetical order)
 - @Diegus83
