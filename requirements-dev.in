@@ -1,7 +1,7 @@
 -r requirements.txt
-nose
+pytest
 flake8
 black
-sphinx
+# sphinx
 # mock
 # httmock

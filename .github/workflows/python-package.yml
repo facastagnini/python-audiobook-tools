@@ -26,8 +26,8 @@ jobs:
     - name: Setup virtual environment
       run: make setup
     - name: Test with auto formatter (black)
-      run: make auto_formatter
-    - name: Test with nose
+      run: make auto_formatter_test
+    - name: Test with pytest
       run: make unit_test
     - name: Lint with flake8
       run: make lint
