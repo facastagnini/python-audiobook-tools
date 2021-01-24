@@ -34,7 +34,7 @@ auto_formatter_test:
 # https://github.com/psf/black
 auto_formatter:
 	@echo "[$@]"
-	./.virtualenv/bin/black
+	./.virtualenv/bin/black .
 
 lint: virtualenv
 	@echo "[$@]"

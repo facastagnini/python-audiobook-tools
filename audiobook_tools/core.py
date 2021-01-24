@@ -41,7 +41,7 @@ logger.addHandler(ch)
 
 def get_hmm():
     """Get a thought.
-    
+
     >>> get_hmm()
     'hmmm...'
     """
@@ -50,7 +50,7 @@ def get_hmm():
 
 def hmm():
     """Contemplation...
-    
+
     >>> hmm()
     hmmm...
     """

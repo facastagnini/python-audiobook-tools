@@ -7,3 +7,23 @@ addopts = '--exitfirst --last-failed -v --doctest-modules'
 [tool.black]
 # The GitHub editor is 127 chars wide
 line-length = 127
+target-version = ['py36', 'py37', 'py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
