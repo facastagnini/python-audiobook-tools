@@ -40,12 +40,20 @@ logger.addHandler(ch)
 
 
 def get_hmm():
-    """Get a thought."""
+    """Get a thought.
+
+    >>> get_hmm()
+    'hmmm...'
+    """
     return "hmmm..."
 
 
 def hmm():
-    """Contemplation..."""
+    """Contemplation...
+
+    >>> hmm()
+    hmmm...
+    """
     if helpers.get_answer():
         print(get_hmm())
 

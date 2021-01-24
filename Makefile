@@ -29,14 +29,12 @@ test: auto_formatter_test lint unit_test
 # https://github.com/psf/black
 auto_formatter_test:
 	@echo "[$@]"
-	# The GitHub editor is 127 chars wide
-	./.virtualenv/bin/black --line-length 127 --check --diff --color .
+	./.virtualenv/bin/black --check --diff --color .
 
 # https://github.com/psf/black
 auto_formatter:
 	@echo "[$@]"
-	# The GitHub editor is 127 chars wide
-	./.virtualenv/bin/black --line-length 127 .
+	./.virtualenv/bin/black .
 
 lint: virtualenv
 	@echo "[$@]"
@@ -48,13 +46,7 @@ lint: virtualenv
 # https://docs.python-guide.org/writing/tests/#unittest
 unit_test: virtualenv
 	@echo "[$@]"
-	./.virtualenv/bin/python setup.py nosetests
-	# ./.virtualenv/bin/nosetests
-
-# https://docs.python-guide.org/writing/tests/#doctest
-doctest: virtualenv
-	@echo "[$@]"
-	./.virtualenv/bin/python doctest
+	./.virtualenv/bin/python -m pytest 
 
 build: virtualenv
 	@echo "[$@]"

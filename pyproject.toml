@@ -1,0 +1,26 @@
+# what is this file?
+# read -> https://black.readthedocs.io/en/stable/pyproject_toml.html
+
+[tool.pytest]
+addopts = '--exitfirst --last-failed -v --doctest-modules'
+
+[tool.black]
+# The GitHub editor is 127 chars wide
+line-length = 127
+target-version = ['py36', 'py37', 'py38']
+include = '\.pyi?$'
+verbose = true
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.virtualenv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
