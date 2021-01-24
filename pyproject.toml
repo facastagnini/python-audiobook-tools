@@ -9,6 +9,7 @@ addopts = '--exitfirst --last-failed -v --doctest-modules'
 line-length = 127
 target-version = ['py36', 'py37', 'py38']
 include = '\.pyi?$'
+verbose = true
 exclude = '''
 /(
     \.eggs
@@ -16,14 +17,10 @@ exclude = '''
   | \.hg
   | \.mypy_cache
   | \.tox
-  | \.venv
+  | \.virtualenv
   | _build
   | buck-out
   | build
   | dist
-  # The following are specific to Black, you probably don't want those.
-  | blib2to3
-  | tests/data
-  | profiling
 )/
 '''
