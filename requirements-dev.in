@@ -1,6 +1,13 @@
 -r requirements.txt
 pytest
-flake8
+flakehell
+flake8-docstrings
+flake8-isort
+flake8-builtins
+flake8-bugbear
+flake8-comprehensions
+flake8-pytest-style
+pep8-naming
 black
 # sphinx
 # mock

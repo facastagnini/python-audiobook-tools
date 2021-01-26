@@ -1,16 +1,14 @@
 import argparse
 import logging
 import sys
+
 from . import helpers
-from .helpers import Audiobook
 from .__version__ import __version__
+from .helpers import Audiobook
+
 
 ###################################
 # logger - this should be somewhere else....
-import logging
-import os
-import tempfile
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
