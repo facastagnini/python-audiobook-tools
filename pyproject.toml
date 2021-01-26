@@ -54,3 +54,15 @@ flake8-pytest-style = ["+*"]
 pycodestyle = ["+*"]
 pyflakes = ["+*"]
 pylint = ["+*"]   # "+F*", "+E*", "-E0611", "-E1101", "-E0401", "-E1102", "-E1123"
+
+# -- ISORT -- #
+
+[tool.isort]
+# The GitHub editor is 127 chars wide
+line_length = 127
+combine_as_imports = true
+balanced_wrapping = true
+lines_after_imports = 2
+include_trailing_comma = true
+not_skip = "__init__.py"
+multi_line_output = 5

@@ -2,6 +2,7 @@ import os
 
 from audiobook_tools.helpers import Audiobook
 
+
 AUDIOBOOK_AUDIBLE = "fixtures/audible.m4b"
 AUDIOBOOK_OVERDRIVE = "fixtures/overdrive.m4b"
 AUDIOBOOK_INCOMPLETE_METADATA = "fixtures/author - title.m4b"
