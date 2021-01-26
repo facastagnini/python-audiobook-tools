@@ -27,21 +27,18 @@ update_requirements: virtualenv
 test: auto_formatter_test lint unit_test 
 
 # https://github.com/psf/black
-auto_formatter_test:
+auto_formatter_test: virtualenv
 	@echo "[$@]"
 	./.virtualenv/bin/black --check --diff --color .
 
 # https://github.com/psf/black
-auto_formatter:
+auto_formatter: virtualenv
 	@echo "[$@]"
 	./.virtualenv/bin/black .
 
 lint: virtualenv
 	@echo "[$@]"
-	# stop the build if there are Python syntax errors or undefined names
-	./.virtualenv/bin/flake8 --count --select=E9,F63,F7,F82 --show-source --statistics ./tests ./audiobook_tools setup.py
-	# exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-	./.virtualenv/bin/flake8 --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics ./tests ./audiobook_tools setup.py
+	./.virtualenv/bin/flake8helled ./tests ./audiobook_tools setup.py
 
 # https://docs.python-guide.org/writing/tests/#unittest
 unit_test: virtualenv

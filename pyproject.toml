@@ -1,5 +1,6 @@
-# what is this file?
+# This fancy new file is the replacement for setup.py and setup.cfg originally specified in PEP 518
 # read -> https://black.readthedocs.io/en/stable/pyproject_toml.html
+# example -> https://raw.githubusercontent.com/life4/flakehell/master/pyproject.toml
 
 [tool.pytest]
 addopts = '--exitfirst --last-failed -v --doctest-modules'
@@ -24,3 +25,31 @@ exclude = '''
   | dist
 )/
 '''
+
+[tool.flakehell]
+exclude = ["README.rst", "README.md"]
+include = ["./tests", "./audiobook_tools"]
+format = "colored"
+# The GitHub editor is 127 chars wide
+max_line_length = 127
+# show line of source code in output
+show_source = true
+# whitelist = "../../allowlist.txt"
+
+[tool.flakehell.plugins]
+# flake8-bandit = ["+*", "-S322"]
+# flake8-bugbear = ["+*"]
+flake8-builtins = ["+*"]
+flake8-comprehensions = ["+*"]
+# flake8-darglint = ["+*"]
+# flake8-docstrings = ["+*"]
+flake8-eradicate = ["+*"]
+# flake8-isort = ["+*"]
+flake8-mutable = ["+*"]
+# flake8-pytest-style = ["+*"]
+flake8-spellcheck = ["+*"]
+# mccabe = ["+*"]
+pep8-naming = ["+*"]
+pycodestyle = ["+*"]
+pyflakes = ["+*"]
+pylint = ["+*"]   # "+F*", "+E*", "-E0611", "-E1101", "-E0401", "-E1102", "-E1123"

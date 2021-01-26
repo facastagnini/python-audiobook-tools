@@ -1,6 +1,6 @@
 -r requirements.txt
 pytest
-flake8
+flakehell
 black
 # sphinx
 # mock

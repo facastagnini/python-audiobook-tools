@@ -112,7 +112,7 @@ def scrape(ASIN=None):
         "author": [],
         "title": "",
         "subtitle": "",
-        #'release': '', #we can't access the full release date unless we are authenticated or from the results page
+        # 'release': '', # we can't access the full release date unless we are authenticated or from the results page
         "narrator": [],
         "series": [],
         "duration": "",  # this may be useful for disambiguation in the future
@@ -131,7 +131,7 @@ def scrape(ASIN=None):
     try:
         tags["subtitle"] = soup.find_all("li", class_="bc-spacing-s2")[0].find("span").string
 
-    except:
+    except IndexError:
         tags["subtitle"] = ""
 
     for i in soup.find("li", class_="narratorLabel").find_all("a"):
@@ -141,7 +141,7 @@ def scrape(ASIN=None):
         for i in soup.find("li", class_="seriesLabel").find_all("a"):
             tags["series"].append(i.string)
 
-    except:
+    except IndexError:
         tags["series"] = ""
 
     tags["duration"] = soup.find("li", class_="runtimeLabel").string.splitlines()[3].strip()
