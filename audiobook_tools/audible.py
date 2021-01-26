@@ -1,7 +1,8 @@
-import urllib.request as request
-import urllib.error
 import argparse
 import sys
+import urllib.error
+import urllib.request as request
+
 from bs4 import BeautifulSoup
 
 urlbase = "https://www.audible.com/pd/"

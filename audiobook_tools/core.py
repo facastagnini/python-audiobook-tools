@@ -1,10 +1,10 @@
 import argparse
 import logging
 import sys
-from . import helpers
-from .helpers import Audiobook
-from .__version__ import __version__
 
+from . import helpers
+from .__version__ import __version__
+from .helpers import Audiobook
 
 ###################################
 # logger - this should be somewhere else....

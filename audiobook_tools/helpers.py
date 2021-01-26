@@ -1,4 +1,5 @@
 import logging
+
 from mutagen.mp4 import MP4  # , MP4Cover
 
 logger = logging.getLogger(__name__)

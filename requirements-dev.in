@@ -1,6 +1,9 @@
 -r requirements.txt
 pytest
 flakehell
+flake8-docstrings
+flake8-isort
+pep8-naming
 black
 # sphinx
 # mock

@@ -34,22 +34,23 @@ format = "colored"
 max_line_length = 127
 # show line of source code in output
 show_source = true
+count = true
 # whitelist = "../../allowlist.txt"
 
 [tool.flakehell.plugins]
 # flake8-bandit = ["+*", "-S322"]
-flake8-bugbear = ["+*"]
+# flake8-bugbear = ["+*"]
 flake8-builtins = ["+*"]
-flake8-comprehensions = ["+*"]
+# flake8-comprehensions = ["+*"]
 # flake8-darglint = ["+*"]
 # flake8-docstrings = ["+*"]
-flake8-eradicate = ["+*"]
+# flake8-eradicate = ["+*"]
 flake8-isort = ["+*"]
-flake8-mutable = ["+*"]
-flake8-pytest-style = ["+*"]
-flake8-spellcheck = ["+*"]
+# flake8-mutable = ["+*"]
+# flake8-pytest-style = ["+*"]
+# flake8-spellcheck = ["+*"]
 # mccabe = ["+*"]
-pep8-naming = ["+*"]
+# pep8-naming = ["+*"]
 pycodestyle = ["+*"]
 pyflakes = ["+*"]
 pylint = ["+*"]   # "+F*", "+E*", "-E0611", "-E1101", "-E0401", "-E1102", "-E1123"
