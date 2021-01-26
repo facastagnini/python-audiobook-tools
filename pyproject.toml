@@ -38,8 +38,8 @@ count = true
 # whitelist = "../../allowlist.txt"
 
 [tool.flakehell.plugins]
-# flake8-bandit = ["+*", "-S322"]
-# flake8-bugbear = ["+*"]          # Find likely bugs and design problems in your program.
+# flake8-bandit = ["+*", "-S322"]  # Automated security testing
+flake8-bugbear = ["+*"]            # Find likely bugs and design problems in your program.
 flake8-builtins = ["+*"]           # Check for python builtins being used as variables or parameters.
 # flake8-comprehensions = ["+*"]
 # flake8-darglint = ["+*"]
