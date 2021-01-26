@@ -5,12 +5,9 @@ from . import helpers
 from .helpers import Audiobook
 from .__version__ import __version__
 
+
 ###################################
 # logger - this should be somewhere else....
-import logging
-import os
-import tempfile
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
