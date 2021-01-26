@@ -13,7 +13,7 @@ trailingoptions = "?ipRedirectOverride=true"
 def main(args):
     parser = argparse.ArgumentParser(prog="audible", description="Parse audiobook metadata from Audible.")
     parser.add_argument("-i", "--interactive", help="Interactive mode", action="store_true")
-    parser.add_argument("-A", "--ASIN", help="Provide an ASIN number")
+    parser.add_argument("-A", "--asin", help="Provide an asin number")
     parser.add_argument("-a", "--author", help="Search by author name")
     parser.add_argument("-t", "--title", help="Search by book title")
 
@@ -21,11 +21,11 @@ def main(args):
 
     if opts.interactive:
         repl()
-    if opts.ASIN:
-        if validate_ASIN(opts.ASIN):
-            scrape(opts.ASIN)
+    if opts.asin:
+        if validate_asin(opts.asin):
+            scrape(opts.asin)
         else:
-            print("Not a valid ASIN lenght")
+            print("Not a valid asin lenght")
             quit()
     if opts.author:
         findbook(opts.author)
@@ -35,42 +35,42 @@ def main(args):
 
 def repl():
     """
-    In interactive mode the prompt will ask for an ASIN number,
+    In interactive mode the prompt will ask for an asin number,
     if valid it will fetch the metadata from audible and print to stdou
     """
-    print("Enter ASIN # (10 alphanumeric characters)")
+    print("Enter asin # (10 alphanumeric characters)")
     print("Hit Ctrl-C to exit")
     while True:
         try:
-            ASIN = input("ASIN #: ")
+            asin = input("asin #: ")
         except KeyboardInterrupt:
             print("Goodbye!")
             break
-        if validate_ASIN(ASIN):
-            scrape(ASIN)
+        if validate_asin(asin):
+            scrape(asin)
         else:
-            print("Not a valid ASIN lenght")
+            print("Not a valid asin lenght")
 
 
-def validate_ASIN(ASIN):
+def validate_asin(asin):
     """
-    Check for a properly formatted ASIN #
-    This doesn't mean the ASIN exist in Audible, onlt that is properly formatted
+    Check for a properly formatted asin #
+    This doesn't mean the asin exist in Audible, onlt that is properly formatted
     """
-    if len(ASIN) == 10 and ASIN.isalnum():
+    if len(asin) == 10 and asin.isalnum():
         return True
     else:
         return False
 
 
-def assembleurl(ASIN=None, author=None, title=None):
+def assembleurl(asin=None, author=None, title=None):
     """
     Assemble the audible URL.
-    If an ASIN# is provided the URL will go directly to the book page.
+    If an asin# is provided the URL will go directly to the book page.
     If author/title are provided the URL will perform a search in audible with those terms (not implemented yet)
     """
-    if ASIN:
-        url = urlbase + ASIN + trailingoptions
+    if asin:
+        url = urlbase + asin + trailingoptions
     elif author or title:
         print("Not implemented")
         quit()
@@ -80,7 +80,7 @@ def assembleurl(ASIN=None, author=None, title=None):
 def fetch_html(url):
     """
     Given a possible URL for the book page, fetch the HTML and save it as data object
-    We can get a 404 error if the ASIN # doesn't exist
+    We can get a 404 error if the asin # doesn't exist
     """
     # try to catch http errors
     try:
@@ -98,12 +98,12 @@ def fetch_html(url):
         return data
 
 
-def scrape(ASIN=None):
+def scrape(asin=None):
     """
-    We only scrape once we have an ASIN number, either provided by the
+    We only scrape once we have an asin number, either provided by the
     user or found using the author/title search (not implemmented yet)
     """
-    url = assembleurl(ASIN)
+    url = assembleurl(asin)
     data = fetch_html(url)
     # create soup element for parsing
     soup = BeautifulSoup(data, "html.parser")
@@ -121,7 +121,7 @@ def scrape(ASIN=None):
         "categories": [],
         "summary": "",
         "copyright": "",
-        "ASIN": ASIN,
+        "asin": asin,
     }
 
     # begin parsing and extracting
