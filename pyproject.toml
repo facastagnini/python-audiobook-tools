@@ -39,13 +39,13 @@ count = true
 
 [tool.flakehell.plugins]
 # flake8-bandit = ["+*", "-S322"]
-# flake8-bugbear = ["+*"]
-flake8-builtins = ["+*"]
+# flake8-bugbear = ["+*"]          # Find likely bugs and design problems in your program.
+flake8-builtins = ["+*"]           # Check for python builtins being used as variables or parameters.
 # flake8-comprehensions = ["+*"]
 # flake8-darglint = ["+*"]
 # flake8-docstrings = ["+*"]
 # flake8-eradicate = ["+*"]
-flake8-isort = ["+*"]
+flake8-isort = ["+*"]              # Check for sorting issues
 # flake8-mutable = ["+*"]
 # flake8-pytest-style = ["+*"]
 # flake8-spellcheck = ["+*"]

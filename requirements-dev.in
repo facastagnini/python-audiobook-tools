@@ -3,6 +3,7 @@ pytest
 flakehell
 flake8-docstrings
 flake8-isort
+flake8-builtins
 pep8-naming
 black
 # sphinx
