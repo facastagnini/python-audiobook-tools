@@ -5,8 +5,8 @@ import urllib.parse
 import urllib.request
 
 from bs4 import BeautifulSoup
-
 from mutagen.mp4 import MP4  # , MP4Cover
+
 
 logger = logging.getLogger(__name__)
 
