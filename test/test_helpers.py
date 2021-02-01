@@ -1,7 +1,7 @@
 import os
 
 from audiobook_tools.helpers import Audiobook
-from audiobook_tools.helpers import audibleMetadata
+from audiobook_tools.helpers import AudibleMetadata
 
 AUDIOBOOK_AUDIBLE = "fixtures/audible.m4b"
 AUDIOBOOK_OVERDRIVE = "fixtures/overdrive.m4b"
@@ -39,5 +39,5 @@ def test_read_audiobook_with_incomplete_metadata():
 
 def test_asin_validation():
     """Testing that we can validate the asin structure"""
-    b = audibleMetadata("B002UZJGYY")
-    assert b.asinIsValid() == True
+    b = AudibleMetadata("B002UZJGYY")
+    assert b.asinisvalid() == True
