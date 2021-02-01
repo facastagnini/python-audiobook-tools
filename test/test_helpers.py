@@ -1,4 +1,3 @@
-
 import os
 
 from audiobook_tools.helpers import Audiobook
@@ -37,13 +36,8 @@ def test_read_audiobook_with_incomplete_metadata():
     """
     read_audiobook(AUDIOBOOK_INCOMPLETE_METADATA)
 
+
 def test_asin_validation():
     """Testing that we can validate the asin structure"""
-    b = audibleMetadata('abcde12345')
-    c = audibleMetadata('$bcde12345')
-    d = audibleMetadata('abcde')
+    b = audibleMetadata("B002UZJGYY")
     assert b.asinIsValid() == True
-    assert c.asinIsValid() == False
-    assert d.asinIsValid() == False
-    
-    
