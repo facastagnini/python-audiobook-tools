@@ -75,27 +75,26 @@ class AudibleMetadata:
     #True
     """
 
-    asin = ""
-    htmldata = ""
-    url = ""
-    tags = {
-        "audibleurl": "",
-        "author": [],
-        "title": "",
-        "subtitle": "",
-        # "release": '', # we can't access the full release date unless we are authenticated or from the results page
-        "narrator": [],
-        "series": [],
-        "duration": "",
-        "categories": [],
-        "summary": "",
-        "copyright": "",
-        "asin": "",
-        "coverurl": "",
-        "cover": "",
-    }
-
     def __init__(self, asin):
+        self.asin = ""
+        self.htmldata = ""
+        self.url = ""
+        self.tags = {
+            "audibleurl": "",
+            "author": [],
+            "title": "",
+            "subtitle": "",
+            # "release": '', # work in progress
+            "narrator": [],
+            "series": [],
+            "duration": "",
+            "categories": [],
+            "summary": "",
+            "copyright": "",
+            "asin": "",
+            "coverurl": "",
+            "cover": "",
+        }
         self.asin = asin.strip()
         if not self.asinisvalid():
             raise ValueError("asin estructure is not valid")
@@ -119,7 +118,7 @@ class AudibleMetadata:
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
 
-        self.url = URL_BASE + self.asin + TRAILING_OPTTIONS
+        self.url = URL_BASE + self.asin + TRAILING_OPTIONS
 
         try:
             if coverurl is None:
