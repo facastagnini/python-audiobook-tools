@@ -68,12 +68,7 @@ class Audiobook:
 
 
 class AudibleMetadata:
-    """This class retrieves metadata from audible.com for a known asin number
-    # This is the same test that's in the test file
-    #>>> b = AudibleMetadata('B002UZJGYY')
-    #>>> b.asinisvalid()
-    #True
-    """
+    """This class retrieves metadata from audible.com for a known asin number"""
 
     def __init__(self, asin):
         self.asin = ""
@@ -98,7 +93,8 @@ class AudibleMetadata:
         self.asin = asin.strip()
         if not self.asinisvalid():
             raise ValueError("asin estructure is not valid")
-        self.fetchresource()
+        self.url = self.buildurl()
+        self.htmldata = self.fetchresource(self.url)
         self.extract()
 
     def asinisvalid(self):
@@ -108,37 +104,30 @@ class AudibleMetadata:
         else:
             return False
 
-    def fetchresource(self, coverurl=None):
-        """Build the url, fetch the html, catch network errors if any
-        Also fetch covert art if the proper argument is passed
-        """
+    def buildurl(self):
+        """Build the url for the book page"""
+        return URL_BASE + self.asin + TRAILING_OPTIONS
+
+    def fetchresource(self, url):
+        """Fetch the passed url, catch network errors if any"""
 
         # Ignore SSL certificate errors
         ctx = ssl.create_default_context()
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
 
-        self.url = URL_BASE + self.asin + TRAILING_OPTIONS
-
         try:
-            if coverurl is None:
-                connection = urllib.request.urlopen(self.url, context=ctx)
-            else:
-                connection = urllib.request.urlopen(coverurl, context=ctx)
+            connection = urllib.request.urlopen(url, context=ctx)
         except urllib.error.HTTPError as e:
             # Return code error (e.g. 404, 501, ...)
             print("HTTPError: {}".format(e.code))
             raise ConnectionError
-
         except urllib.error.URLError as e:
             # Not an HTTP-specific error (e.g. connection refused)
             print("URLError: {}".format(e.reason))
             raise ConnectionRefusedError
         else:
-            if coverurl is None:
-                self.htmldata = connection.read().decode("utf-8")
-            else:
-                return connection.read()
+            return connection.read()
 
     def extract(self):
         """extract the metadata from the html object using bs4"""
@@ -192,4 +181,4 @@ class AudibleMetadata:
         self.tags["coverurl"] = soup.find_all("img")[1]["src"]
 
         # cover art
-        self.tags["cover"] = self.fetchresource(coverurl=self.tags["coverurl"])
+        self.tags["cover"] = self.fetchresource(self.tags["coverurl"])
