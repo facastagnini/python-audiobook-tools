@@ -11,7 +11,7 @@ from mutagen.mp4 import MP4  # , MP4Cover
 logger = logging.getLogger(__name__)
 
 URL_BASE = "https://www.audible.com/pd/"
-TRAILING_OPTTIONS = "?ipRedirectOverride=true"
+TRAILING_OPTIONS = "?ipRedirectOverride=true"
 
 
 def get_answer():
