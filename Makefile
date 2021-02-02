@@ -28,7 +28,7 @@ test: isort auto_formatter_test lint unit_test
 
 isort: virtualenv
 	@echo "[$@]"
-	./.virtualenv/bin/isort ./test ./audiobook_tools setup.py
+	./.virtualenv/bin/isort ./tests ./audiobook_tools setup.py
 
 # https://github.com/psf/black
 auto_formatter_test: virtualenv
@@ -42,7 +42,7 @@ auto_formatter: virtualenv
 
 lint: virtualenv
 	@echo "[$@]"
-	./.virtualenv/bin/flake8helled ./test ./audiobook_tools setup.py
+	./.virtualenv/bin/flake8helled ./tests ./audiobook_tools setup.py
 
 # https://docs.python-guide.org/writing/tests/#unittest
 unit_test: virtualenv
