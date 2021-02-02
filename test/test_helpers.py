@@ -1,7 +1,7 @@
 import os
 
-from audiobook_tools.helpers import Audiobook
-from audiobook_tools.helpers import AudibleMetadata
+from audiobook_tools.helpers import AudibleMetadata, Audiobook
+
 
 AUDIOBOOK_AUDIBLE = "fixtures/audible.m4b"
 AUDIOBOOK_OVERDRIVE = "fixtures/overdrive.m4b"
