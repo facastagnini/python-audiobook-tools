@@ -24,7 +24,7 @@ update_requirements: virtualenv
 	&& ./.virtualenv/bin/pip-compile --upgrade requirements-dev.in \
 	&& ./.virtualenv/bin/pip-sync requirements-dev.txt
 
-test: isort auto_formatter_test lint unit_test 
+test: isort auto_formatter lint unit_test 
 
 isort: virtualenv
 	@echo "[$@]"

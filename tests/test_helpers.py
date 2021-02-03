@@ -47,8 +47,8 @@ def b():
 
 
 def test_asin_validation(b):
-    """Testing that we can validate the asin structure"""
-    assert b.asinisvalid()
+    """Testing that we can clean and validate the asin"""
+    assert b.validateasin(" B002UZJGYY ") == "B002UZJGYY"
 
 
 def test_metadata_extraction(b):

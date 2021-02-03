@@ -90,19 +90,18 @@ class AudibleMetadata:
             "coverurl": "",
             "cover": "",
         }
-        self.asin = asin.strip()
-        if not self.asinisvalid():
-            raise ValueError("asin estructure is not valid")
+        self.asin = self.validateasin(asin)
         self.url = self.buildurl()
         self.htmldata = self.fetchresource(self.url)
         self.extract()
 
-    def asinisvalid(self):
-        """Validates the asin structure"""
-        if len(self.asin) == 10 and self.asin.isalnum():
-            return True
+    def validateasin(self, asin):
+        """Clean and filter malformed asin"""
+        asin = asin.strip()
+        if len(asin) == 10 and asin.isalnum():
+            return asin
         else:
-            return False
+            raise ValueError("asin has wrong lenght or invalid characters")
 
     def buildurl(self):
         """Build the url for the book page"""
