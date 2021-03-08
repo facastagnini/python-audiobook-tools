@@ -11,7 +11,7 @@ clean:
 
 setup: $(PYTHON_ENV_PATH) update_requirements
 	@echo "The python virtual environment has been setup, you have to activate \
-		   it, execute: source .virtualenv/bin/activate"
+	it, execute: source $(PYTHON_ENV_PATH)/bin/activate"
 
 $(PYTHON_ENV_PATH):
 	@echo "[$@]"
@@ -19,7 +19,7 @@ $(PYTHON_ENV_PATH):
 	&& ./$(PYTHON_ENV_PATH)/bin/pip install --upgrade -r requirements-dev.txt \
 	&& ./$(PYTHON_ENV_PATH)/bin/pip install --editable .
 	@echo "The python virtual environment has been setup, you have to activate \
-		   it, execute: source $(PYTHON_ENV_PATH)/bin/activate"
+	it, execute: source $(PYTHON_ENV_PATH)/bin/activate"
 
 update_requirements: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
