@@ -24,7 +24,11 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Setup virtual environment
-      run: make setup
+      run: make .virtualenv
+    - name: Update requirments
+      run: make update_requirements
+    - name: Auto correct format (black)
+      run: make auto_formatter
     - name: Test with auto formatter (black)
       run: make auto_formatter_test
     - name: Test with pytest

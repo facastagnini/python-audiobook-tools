@@ -1,53 +1,56 @@
 PYTHON ?= python3
+PYTHON_ENV_PATH ?= .virtualenv
 
-default: test
+default: setup auto_formatter test
 
 clean:
 	@echo "[$@]"
-	deactivate 2> /dev/null || true
-	rm -rf .virtualenv nosetests.xml .noseids *.egg-info build
+	@# generic cleanup task
+	@# remove untracked files and directories explicitly ignored by .gitignore
+	-git clean -dX --interactive
 
-setup: virtualenv update_requirements
-	@echo 'The python virtual environment has been setup, you have to activate it, execute: source .virtualenv/bin/activate'
+setup: $(PYTHON_ENV_PATH) update_requirements
+	@echo "The python virtual environment has been setup, you have to activate \
+		   it, execute: source .virtualenv/bin/activate"
 
-virtualenv:
+$(PYTHON_ENV_PATH):
 	@echo "[$@]"
-	$(PYTHON) -m venv .virtualenv \
-	&& ./.virtualenv/bin/pip install --upgrade pip-tools wheel \
-	&& ./.virtualenv/bin/pip install --upgrade -r requirements-dev.txt \
-	&& ./.virtualenv/bin/pip install --editable .
-	@echo 'The python virtual environment has been setup, you have to activate it, execute: source .virtualenv/bin/activate'
+	$(PYTHON) -m venv $(PYTHON_ENV_PATH) \
+	&& ./$(PYTHON_ENV_PATH)/bin/pip install --upgrade -r requirements-dev.txt \
+	&& ./$(PYTHON_ENV_PATH)/bin/pip install --editable .
+	@echo "The python virtual environment has been setup, you have to activate \
+		   it, execute: source $(PYTHON_ENV_PATH)/bin/activate"
 
-update_requirements: virtualenv
+update_requirements: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
-	./.virtualenv/bin/pip-compile --upgrade requirements.in \
-	&& ./.virtualenv/bin/pip-compile --upgrade requirements-dev.in \
-	&& ./.virtualenv/bin/pip-sync requirements-dev.txt
+	./$(PYTHON_ENV_PATH)/bin/pip-compile    --upgrade requirements.in \
+	&& ./$(PYTHON_ENV_PATH)/bin/pip-compile --upgrade requirements-dev.in \
+	&& ./$(PYTHON_ENV_PATH)/bin/pip-sync requirements-dev.txt
 
-test: auto_formatter_test lint unit_test 
+test: auto_formatter_test lint unit_test
 
 # https://github.com/psf/black
-auto_formatter_test: virtualenv
+auto_formatter_test: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
-	./.virtualenv/bin/black --check --diff --color .
+	./$(PYTHON_ENV_PATH)/bin/black --check --diff --color .
 
 # https://github.com/psf/black
-auto_formatter: virtualenv
+auto_formatter: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
-	./.virtualenv/bin/black .
+	./$(PYTHON_ENV_PATH)/bin/black .
 
-lint: virtualenv
+lint: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
-	./.virtualenv/bin/flake8helled ./tests ./audiobook_tools setup.py
+	./$(PYTHON_ENV_PATH)/bin/flake8helled ./tests ./audiobook_tools setup.py
 
 # https://docs.python-guide.org/writing/tests/#unittest
-unit_test: virtualenv
+unit_test: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
-	./.virtualenv/bin/python -m pytest 
+	./$(PYTHON_ENV_PATH)/bin/python -m pytest
 
-build: virtualenv
+build: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
-	./.virtualenv/bin/python setup.py sdist
+	./$(PYTHON_ENV_PATH)/bin/python setup.py sdist
 
 # publish:
 # 	@echo "[$@]"

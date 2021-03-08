@@ -10,5 +10,5 @@ bs4==0.0.1
     # via -r requirements.in
 mutagen==1.45.1
     # via -r requirements.in
-soupsieve==2.1
+soupsieve==2.2
     # via beautifulsoup4
