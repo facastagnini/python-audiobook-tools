@@ -106,4 +106,6 @@ def run():
         exit(0)
 
     ab = Audiobook(args.file)
+
+    if 
     print(ab._read_metadata())

@@ -3,7 +3,7 @@
 # example -> https://raw.githubusercontent.com/life4/flakehell/master/pyproject.toml
 
 [tool.pytest]
-addopts = '--exitfirst --last-failed -v --doctest-modules'
+addopts = '--exitfirst --last-failed -v --doctest-modules --durations=0'
 
 [tool.black]
 # The GitHub editor is 127 chars wide
