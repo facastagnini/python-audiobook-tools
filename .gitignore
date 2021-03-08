@@ -97,4 +97,4 @@ ENV/
 # diego temp files
 exclude
 .vscode
-*.code-workspace 
+*.code-workspace
