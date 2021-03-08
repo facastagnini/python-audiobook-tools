@@ -1,7 +1,7 @@
 PYTHON ?= python3
 PYTHON_ENV_PATH ?= .virtualenv
 
-default: test
+default: setup auto_formatter test
 
 clean:
 	@echo "[$@]"
