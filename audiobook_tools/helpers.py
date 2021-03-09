@@ -1,7 +1,6 @@
 import logging
 
 from mutagen.easymp4 import EasyMP4
-from mutagen 
 
 
 logger = logging.getLogger(__name__)
@@ -33,20 +32,17 @@ class Audiobook:
         return "This object abstracts the audiobook: %s" + self.audiobook_file
 
     def _read_metadata(self):
-        """This method reads the metadata from the audiobook file.
-
-        """
+        """This method reads the metadata from the audiobook file."""
 
         # try:
         metadata = EasyMP4(self.audiobook_file)
         return metadata
 
-
     def pprint(self):
         """return a lot of info about the current file"""
 
         ret = {}
-        ret['file'] = self.audiobook_file
-        ret['info'] = self.metadata.info.pprint()
+        ret["file"] = self.audiobook_file
+        ret["info"] = self.metadata.info.pprint()
 
         return ret
