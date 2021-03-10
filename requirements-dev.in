@@ -1,4 +1,6 @@
 -r requirements.txt
+pip-tools
+wheel
 pytest
 flakehell
 flake8-docstrings
