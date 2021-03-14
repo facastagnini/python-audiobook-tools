@@ -30,7 +30,7 @@ exclude = '''
 
 [tool.flakehell]
 exclude = ["README.rst", "README.md"]
-include = ["./tests", "./audiobook_tools"]
+include = ["./tests", "./audiobook_tools", "setup.py"]
 format = "colored"
 # The GitHub editor is 127 chars wide
 max_line_length = 127
