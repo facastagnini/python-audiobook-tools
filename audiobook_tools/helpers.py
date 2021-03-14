@@ -4,7 +4,9 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+from bs4 import BeautifulSoup
 from mutagen.easymp4 import EasyMP4
+
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +54,7 @@ class Audiobook:
         ret["info"] = self.metadata.info.pprint()
 
         return ret
-      
+
 
 class AudibleMetadata:
     """This class retrieves metadata from audible.com for a known asin number"""
