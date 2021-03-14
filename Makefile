@@ -3,11 +3,15 @@ PYTHON_ENV_PATH ?= .virtualenv
 
 default: setup auto_formatter test
 
-clean:
+git/clean:
 	@echo "[$@]"
 	@# generic cleanup task
 	@# remove untracked files and directories explicitly ignored by .gitignore
 	-git clean -dX --interactive
+
+clean:
+	@echo "[$@]"
+	-rm -rf .virtualenv nosetests.xml .noseids *.egg-info build
 
 setup: $(PYTHON_ENV_PATH) update_requirements
 	@echo "The python virtual environment has been setup, you have to activate \
@@ -27,7 +31,7 @@ update_requirements: $(PYTHON_ENV_PATH)
 	&& ./$(PYTHON_ENV_PATH)/bin/pip-compile --upgrade requirements-dev.in \
 	&& ./$(PYTHON_ENV_PATH)/bin/pip-sync requirements-dev.txt
 
-test: auto_formatter lint unit_test 
+test: auto_formatter lint unit_test
 
 # https://github.com/psf/black
 auto_formatter_test: $(PYTHON_ENV_PATH)
