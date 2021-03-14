@@ -33,7 +33,7 @@ Version 0.1.0. [Python 3.9.1-darwin] Source at https://github.com/facastagnini/p
 ## Usage (WIP)
 
 ```
-$ audiobook_tools info -h 
+$ audiobook_tools info -h
 ```
 
 ## Development
@@ -53,6 +53,13 @@ make test # to make sure you didnt break things
 # open a PR
 ```
 
+## Example commands
+
+- Display an audiobook's current metadata
+  ```
+  audiobook_tools info -f tests/fixtures/audible.m4b
+  ```
+
 ### ROADMAP
 
 The tool should:
@@ -61,7 +68,7 @@ The tool should:
 - [ ] search audible for the first x matches (default to 5)
 - [ ] present a table with the matches, the user picks one as the correct one
 - [ ] fetch metadata for the selected result
-- [ ] prenset a diff table showing all the fields and a before and after. example
+- [ ] preset a diff table showing all the fields and a before and after. example
 
 tag/field | original value | new value
 --------- | -------------- | ---------

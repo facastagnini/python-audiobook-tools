@@ -45,6 +45,7 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
+.pytest_cache
 
 # Translations
 *.mo
@@ -80,9 +81,6 @@ celerybeat-schedule
 .env
 
 # virtualenv
-.venv/
-venv/
-ENV/
 .virtualenv/
 
 # Spyder project settings
@@ -94,6 +92,7 @@ ENV/
 #macOS stuff
 .DS_Store
 
-# diego temp files
+# vscode settings
 exclude
 .vscode
+*.code-workspace

@@ -5,9 +5,7 @@
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "--exitfirst --last-failed -v --doctest-modules"
-testpaths = [
-    "tests",
-]
+testpaths = ["tests"]
 
 [tool.black]
 # The GitHub editor is 127 chars wide
@@ -32,7 +30,7 @@ exclude = '''
 
 [tool.flakehell]
 exclude = ["README.rst", "README.md"]
-include = ["./tests", "./audiobook_tools"]
+include = ["./tests", "./audiobook_tools", "setup.py"]
 format = "colored"
 # The GitHub editor is 127 chars wide
 max_line_length = 127
@@ -69,3 +67,4 @@ balanced_wrapping = true
 lines_after_imports = 2
 include_trailing_comma = true
 multi_line_output = 5
+src_paths = ["tests", "audiobook_tools", "setup.py"]
