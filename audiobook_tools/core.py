@@ -10,7 +10,7 @@ from .helpers import Audiobook
 ###################################
 # logger - this should be somewhere else....
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 # create file handler which logs even debug messages
 # tmp_directory = tempfile.gettempdir()
@@ -20,7 +20,7 @@ logger.setLevel(logging.DEBUG)
 
 # create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
+# ch.setLevel(logging.INFO) use the logger level
 
 # create formatter
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -97,7 +97,7 @@ def run():
     args = parser.parse_args()
     if args.verbose:
         logger.setLevel(logging.DEBUG)
-
+        logger.debug("DEBUG is enabled")
     try:
         # test for audiobook file
         args.file
@@ -106,4 +106,4 @@ def run():
         exit(0)
 
     ab = Audiobook(args.file)
-    print(ab._read_metadata())
+    print(ab.pprint())

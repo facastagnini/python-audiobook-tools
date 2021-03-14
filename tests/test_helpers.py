@@ -24,7 +24,7 @@ def test_read_audible_audiobook():
 
 def test_read_overdrive_audiobook():
     """Testing that the Audiobook class can load an overdrive audiobook"""
-    read_audiobook(AUDIOBOOK_AUDIBLE)
+    read_audiobook(AUDIOBOOK_OVERDRIVE)
 
 
 def test_read_audiobook_with_incomplete_metadata():

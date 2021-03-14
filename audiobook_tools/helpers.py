@@ -1,4 +1,5 @@
 import logging
+import pandas
 import ssl
 import urllib.error
 import urllib.parse
@@ -24,17 +25,19 @@ class Audiobook:
 
     Attributes:
     self.audiobook_file = Audiobook file path (required)
-    self._audiobook_file_current_metadata = Hash containing all the available
-                                            metadata that was read from the
-                                            audiobook file.
+    self._original_metadata = Hash containing all the available
+                              metadata that was read from the
+                              audiobook file.
 
     """
 
     def __init__(self, audiobook_file):
         if audiobook_file is not None:
             self.audiobook_file = str(audiobook_file)
-        self.original_metadata = self._read_metadata()
-        self.metadata = self.original_metadata
+        self._original_metadata = self._read_metadata()
+
+        # start with a copy of the original metadata
+        self._updated_metadata = self._original_metadata
 
     def __repr__(self):
         return "This object abstracts the audiobook: %s" + self.audiobook_file
@@ -42,18 +45,70 @@ class Audiobook:
     def _read_metadata(self):
         """This method reads the metadata from the audiobook file."""
 
-        # try:
         metadata = EasyMP4(self.audiobook_file)
         return metadata
 
     def pprint(self):
-        """return a lot of info about the current file"""
+        """return info about the current file, human friendly """
 
-        ret = {}
-        ret["file"] = self.audiobook_file
-        ret["info"] = self.metadata.info.pprint()
+        # initialize the dictionaries
+        info = {}
+        metadata = {}
 
-        return ret
+        # fill the dictionary with the data we want to print
+        info["file"] = self.audiobook_file
+        info["format"] = self._original_metadata.info.pprint()
+        metadata["original"] = self._original_metadata.tags
+        metadata["updated"] = self._updated_metadata.tags
+
+        print(metadata)
+        #logger.info(data)
+
+        # finally, print the information
+        print("File: {}".format(info["file"]))
+        print("Format: {}\n".format(info["format"]))
+
+        #header_horizontal = list(metadata['original'].keys() + metadata['original'].keys())
+        #header_vertical = []
+
+        return pandas.DataFrame(metadata)
+
+        # ❯ python -m audiobook_tools info -f tests/fixtures/audible.m4b
+        #
+        # {'original': {'title': ['The Man Who Knew the Way to the Moon'], 'album': ['The Man Who Knew the Way to the Moon'], 'artist': ['Todd Zwillich'], 'albumartist': ['Todd Zwillich'], 'date': ['2019'], 'comment': ['Chapter 10'], 'genre': ['Audiobook'], 'copyright': ['©2019 Audible Originals, LLC (P)2019 Audible Originals, LLC.']}, 'updated': {'title': ['The Man Who Knew the Way to the Moon'], 'album': ['The Man Who Knew the Way to the Moon'], 'artist': ['Todd Zwillich'], 'albumartist': ['Todd Zwillich'], 'date': ['2019'], 'comment': ['Chapter 10'], 'genre': ['Audiobook'], 'copyright': ['©2019 Audible Originals, LLC (P)2019 Audible Originals, LLC.']}}
+        # File: tests/fixtures/audible.m4b
+        # Format: MPEG-4 audio (AAC LC), 1.02 seconds, 125589 bps
+        #
+        #       original      updated
+        # 0        title        title
+        # 1        album        album
+        # 2       artist       artist
+        # 3  albumartist  albumartist
+        # 4         date         date
+        # 5      comment      comment
+        # 6        genre        genre
+        # 7    copyright    copyright
+
+
+        #####################################
+        # python                                                                                                  writing-metadata ✱
+        # Python 3.9.2 (default, Feb 24 2021, 10:08:03)
+        # [Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+        # Type "help", "copyright", "credits" or "license" for more information.
+        # >>> import pandas
+        # >>> metadata = {'original': {'title': ['The Man Who Knew the Way to the Moon'], 'album': ['The Man Who Knew the Way to the Moon'], 'artist': ['Todd Zwillich'], 'albumartist': ['Todd Zwillich'], 'date': ['2019'], 'comment': ['Chapter 10'], 'genre': ['Audiobook'], 'copyright': ['©2019 Audible Originals, LLC (P)2019 Audible Originals, LLC.']}, 'updated': {'title': ['The Man Who Knew the Way to the Moon'], 'album': ['The Man Who Knew the Way to the Moon'], 'artist': ['Todd Zwillich'], 'albumartist': ['Todd Zwillich'], 'date': ['2019'], 'comment': ['Chapter 10'], 'genre': ['Cadorna'], 'copyright': ['©2019 Audible Originals, LLC (P)2019 Audible Originals, LLC.'], 'cover': ['diegote']}}
+        #
+        # >>> pandas.DataFrame(metadata)
+        #                                                       original                                            updated
+        # title                   [The Man Who Knew the Way to the Moon]             [The Man Who Knew the Way to the Moon]
+        # album                   [The Man Who Knew the Way to the Moon]             [The Man Who Knew the Way to the Moon]
+        # artist                                         [Todd Zwillich]                                    [Todd Zwillich]
+        # albumartist                                    [Todd Zwillich]                                    [Todd Zwillich]
+        # date                                                    [2019]                                             [2019]
+        # comment                                           [Chapter 10]                                       [Chapter 10]
+        # genre                                              [Audiobook]                                        [Audiobook]
+        # copyright    [©2019 Audible Originals, LLC (P)2019 Audible ...  [©2019 Audible Originals, LLC (P)2019 Audible ...
+        # chacho                                                     NaN                                   [this is a test]
 
 
 class AudibleMetadata:
