@@ -27,11 +27,7 @@ update_requirements: $(PYTHON_ENV_PATH)
 	&& ./$(PYTHON_ENV_PATH)/bin/pip-compile --upgrade requirements-dev.in \
 	&& ./$(PYTHON_ENV_PATH)/bin/pip-sync requirements-dev.txt
 
-test: isort auto_formatter lint unit_test 
-
-isort: virtualenv
-	@echo "[$@]"
-	./.virtualenv/bin/isort ./tests ./audiobook_tools setup.py
+test: auto_formatter lint unit_test 
 
 # https://github.com/psf/black
 auto_formatter_test: $(PYTHON_ENV_PATH)
