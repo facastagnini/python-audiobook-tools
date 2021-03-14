@@ -2,8 +2,12 @@
 # read -> https://black.readthedocs.io/en/stable/pyproject_toml.html
 # example -> https://raw.githubusercontent.com/life4/flakehell/master/pyproject.toml
 
-[tool.pytest]
-addopts = '--exitfirst --last-failed -v --doctest-modules --durations=0'
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--exitfirst --last-failed -v --doctest-modules"
+testpaths = [
+    "tests",
+]
 
 [tool.black]
 # The GitHub editor is 127 chars wide
