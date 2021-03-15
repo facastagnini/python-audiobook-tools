@@ -56,16 +56,16 @@ class Audiobook:
         metadata = {}
 
         # fill the dictionary with the data we want to print
-        info["file"] = self.audiobook_file
+        # info["file"] = self.audiobook_file
         info["format"] = self._original_metadata.info.pprint()
         metadata["Original metadata"] = dict(self._original_metadata.tags)
         metadata["Updated metadata"] = dict(self._updated_metadata.tags)
 
-        # logger.debug(metadata)
+        logger.debug(metadata)
 
         # store the header information
-        ret = "File: {}\n".format(info["file"])
-        ret += "Format: {}\n\n".format(info["format"])
+        # ret = "File: {}\n".format(info["file"])
+        ret = "Format: {}\n\n".format(info["format"])
 
         # use more scree real state to show the table
         pandas.set_option("display.max_colwidth", 55)
