@@ -1,10 +1,10 @@
 import logging
-import pandas
 import ssl
 import urllib.error
 import urllib.parse
 import urllib.request
 
+import pandas
 from bs4 import BeautifulSoup
 from mutagen.easymp4 import EasyMP4
 
@@ -58,18 +58,23 @@ class Audiobook:
         # fill the dictionary with the data we want to print
         info["file"] = self.audiobook_file
         info["format"] = self._original_metadata.info.pprint()
-        metadata["original"] = dict(self._original_metadata.tags)
-        metadata["updated"] = dict(self._updated_metadata.tags)
+        metadata["Original metadata"] = dict(self._original_metadata.tags)
+        metadata["Updated metadata"] = dict(self._updated_metadata.tags)
 
         # logger.debug(metadata)
 
-        # finally, print the information
-        print("File: {}".format(info["file"]))
-        print("Format: {}\n".format(info["format"]))
+        # store the header information
+        ret = "File: {}\n".format(info["file"])
+        ret += "Format: {}\n\n".format(info["format"])
 
         # use more scree real state to show the table
-        pandas.set_option('display.max_colwidth', 80)
-        return pandas.DataFrame(metadata)
+        pandas.set_option("display.max_colwidth", 55)
+
+        # store the table
+        ret += str(pandas.DataFrame(metadata))
+
+        return ret
+
 
 class AudibleMetadata:
     """This class retrieves metadata from audible.com for a known asin number"""
