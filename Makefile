@@ -1,7 +1,7 @@
 PYTHON ?= python3
 PYTHON_ENV_PATH ?= .virtualenv
 
-default: auto_formatter test
+default: isort auto_formatter test
 
 git/clean:
 	@echo "[$@]"
@@ -38,11 +38,6 @@ auto_formatter_test: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
 	./$(PYTHON_ENV_PATH)/bin/black --check --diff --color .
 
-# https://github.com/psf/black
-auto_formatter: $(PYTHON_ENV_PATH)
-	@echo "[$@]"
-	./$(PYTHON_ENV_PATH)/bin/black .
-
 lint: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
 	./$(PYTHON_ENV_PATH)/bin/flake8helled ./tests ./audiobook_tools setup.py
@@ -51,6 +46,15 @@ lint: $(PYTHON_ENV_PATH)
 unit_test: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
 	./$(PYTHON_ENV_PATH)/bin/python -m pytest
+
+# https://github.com/psf/black
+auto_formatter: $(PYTHON_ENV_PATH)
+	@echo "[$@]"
+	./$(PYTHON_ENV_PATH)/bin/black .
+
+isort: $(PYTHON_ENV_PATH)
+	@echo "[$@]"
+	./$(PYTHON_ENV_PATH)/bin/isort ./tests ./audiobook_tools setup.py
 
 build: $(PYTHON_ENV_PATH)
 	@echo "[$@]"
