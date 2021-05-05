@@ -69,7 +69,7 @@ numpy==1.19.5
     #   pandas
 packaging==20.9
     # via pytest
-pandas==1.2.4
+pandas==1.1.5
     # via -r requirements.txt
 pathspec==0.8.1
     # via black
