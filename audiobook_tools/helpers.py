@@ -49,7 +49,7 @@ class Audiobook:
         return metadata
 
     def pprint(self):
-        """return info about the current file, human friendly """
+        """return info about the current file, human friendly"""
 
         # initialize the dictionaries
         info = {}

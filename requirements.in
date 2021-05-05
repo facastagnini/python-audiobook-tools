@@ -1,3 +1,4 @@
 mutagen
 bs4
 pandas
+numpy==1.19.5
