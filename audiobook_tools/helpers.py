@@ -4,6 +4,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+import pandas
 from bs4 import BeautifulSoup
 from mutagen.easymp4 import EasyMP4
 
@@ -24,17 +25,19 @@ class Audiobook:
 
     Attributes:
     self.audiobook_file = Audiobook file path (required)
-    self._audiobook_file_current_metadata = Hash containing all the available
-                                            metadata that was read from the
-                                            audiobook file.
+    self._original_metadata = Hash containing all the available
+                              metadata that was read from the
+                              audiobook file.
 
     """
 
     def __init__(self, audiobook_file):
         if audiobook_file is not None:
             self.audiobook_file = str(audiobook_file)
-        self.original_metadata = self._read_metadata()
-        self.metadata = self.original_metadata
+        self._original_metadata = self._read_metadata()
+
+        # start with a copy of the original metadata
+        self._updated_metadata = self._original_metadata
 
     def __repr__(self):
         return "This object abstracts the audiobook: %s" + self.audiobook_file
@@ -42,16 +45,30 @@ class Audiobook:
     def _read_metadata(self):
         """This method reads the metadata from the audiobook file."""
 
-        # try:
         metadata = EasyMP4(self.audiobook_file)
         return metadata
 
     def pprint(self):
-        """return a lot of info about the current file"""
+        """return info about the current file, human friendly"""
 
-        ret = {}
-        ret["file"] = self.audiobook_file
-        ret["info"] = self.metadata.info.pprint()
+        # initialize the dictionaries
+        info = {}
+        metadata = {}
+
+        # fill the dictionary with the data we want to print
+        # info["file"] = self.audiobook_file
+        info["format"] = self._original_metadata.info.pprint()
+        metadata["Original metadata"] = dict(self._original_metadata.tags)
+        metadata["Updated metadata"] = dict(self._updated_metadata.tags)
+
+        # store the header information
+        ret = "Format: {}\n\n".format(info["format"])
+
+        # use more screen real state to show the table
+        pandas.set_option("display.max_colwidth", 55)
+
+        # store the table
+        ret += str(pandas.DataFrame(metadata))
 
         return ret
 

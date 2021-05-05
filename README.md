@@ -58,12 +58,13 @@ make test # to make sure you didnt break things
 - Display an audiobook's current metadata
   ```
   audiobook_tools info -f tests/fixtures/audible.m4b
+  python -m audiobook_tools info -f tests/fixtures/overdrive.m4b
   ```
 
 ### ROADMAP
 
 The tool should:
-- [ ] take an audiobook file as a parameter
+- [x] take an audiobook file as a parameter
 - [ ] verify the format is correct (M4B)
 - [ ] search audible for the first x matches (default to 5)
 - [ ] present a table with the matches, the user picks one as the correct one

@@ -4,7 +4,7 @@
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--exitfirst --last-failed -v --doctest-modules"
+addopts = "--exitfirst --last-failed -vv --doctest-modules"
 testpaths = ["tests"]
 
 [tool.black]
