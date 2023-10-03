@@ -26,6 +26,15 @@ colorama==0.4.4
     # via flakehell
 entrypoints==0.3
     # via flakehell
+flake8==3.8.4
+    # via
+    #   flake8-bugbear
+    #   flake8-builtins
+    #   flake8-comprehensions
+    #   flake8-docstrings
+    #   flake8-isort
+    #   flake8-polyfill
+    #   flakehell
 flake8-bugbear==21.3.2
     # via -r requirements-dev.in
 flake8-builtins==1.5.3
@@ -42,15 +51,6 @@ flake8-polyfill==1.0.2
     # via pep8-naming
 flake8-pytest-style==1.3.0
     # via -r requirements-dev.in
-flake8==3.8.4
-    # via
-    #   flake8-bugbear
-    #   flake8-builtins
-    #   flake8-comprehensions
-    #   flake8-docstrings
-    #   flake8-isort
-    #   flake8-polyfill
-    #   flakehell
 flakehell==0.9.0
     # via -r requirements-dev.in
 iniconfig==1.1.1
@@ -106,7 +106,7 @@ typed-ast==1.4.2
     # via black
 typing-extensions==3.7.4.3
     # via black
-urllib3==1.26.3
+urllib3==1.26.17
     # via flakehell
 wheel==0.36.2
     # via -r requirements-dev.in
